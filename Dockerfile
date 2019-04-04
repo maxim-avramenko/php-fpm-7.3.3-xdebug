@@ -6,9 +6,7 @@ ENV TZ=${TIME_ZONE}
 
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
-RUN pear config-set php_ini ${PHP_INI_DIR}/php.ini \
-    && pecl config-set php_ini ${PHP_INI_DIR}/php.ini \
-    && pecl install xdebug-2.7.0 \
+RUN pecl install xdebug-2.7.0 \
     && docker-php-ext-enable xdebug
 
 COPY config/php.ini-development ${PHP_INI_DIR}/php.ini
